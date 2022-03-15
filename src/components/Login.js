@@ -15,8 +15,16 @@ function Login() {
         password: password,
       },
     })
-      .then((res) => console.log(res.data))
-      .catch(() => "this is an error");
+      .then((res) => {
+        if (username.length === 0 || password.length === 0) {
+          alert("please enter username and password");
+        } else if (res.data === true) {
+          alert("you have successfully Logged in!");
+        } else if (res.data === false) {
+          alert("incorrect username or password");
+        }
+      })
+      .catch(() => console.log("this is an error"));
   };
 
   return (
